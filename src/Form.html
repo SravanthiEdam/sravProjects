@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML FORM</title>
+</head>
+<body>
+    <form action="Results.html" method="GET" onsubmit="return checkForm(this);">
+        <div>
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" placeholder="username" required>
+        </div>
+        <br>
+        <div>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" required>
+        </div>
+        <br>
+        <script>
+            let passwordCheck = function() {
+  if (document.getElementById('password1').value ==
+    document.getElementById('password2').value) {
+    document.getElementById('message').style.color = 'green';
+    document.getElementById('message').innerHTML = 'Password Match';
+  } else {
+    document.getElementById('message').style.color = 'red';
+    document.getElementById('message').innerHTML = 'Password doesnot matching';
+  }
+}
+        </script>
+        <div>
+            <label>Password:</label>
+            <input type="password" name="password1" id="password1" onkeyup="passwordCheck()">
+        </div>
+        <br>
+        <div>
+            <label>ConfirmPassword:</label>
+            <input type="password" name="password2" id="password2" onkeyup="passwordCheck()">
+            <span id='message'></span>
+        </div>
+        <br>
+        <div>
+            <label for="date">BirthDate</label>
+            <input type="date" name="date" id="date" min="2020-06-10">
+        </div>
+        <br>
+        <div>
+            Favourite Food
+            <div>
+                <label for="banana">Banana</label>
+                <input type="checkbox" name="banana" id="banana">
+            </div>
+            <div>
+                <label for="apple">Apple</label>
+                <input type="checkbox" name="apple" id="apple">
+            </div>
+        </div>
+        <br>
+        <div>
+            Gender
+            <div>
+                <label for="male">Male</label>
+                <input type="radio" name="gender" id="male" value="male">  
+            </div>
+            <div>
+                <label for="female">Feale</label>
+                <input type="radio" name="gender" id="female" value="female">
+            </div>
+        </div>
+        <br>
+        <div>
+            <label for="eyeColor">Eye Color </label>
+                <select name="eyeColor" id="eyeColor" multiple>
+                    <option value="Green">Green</option>
+                    <option value="Orange">Orange</option>
+                    <option  label="blue" value="Blue"></option>
+                </select>
+        </div>
+        <br>
+        <div>
+            <label for="bio">Bio</label>
+            <textarea id="bio" name="bio">My name is Sravanthi</textarea>
+        </div>
+        <br>
+        <div>
+            <button type="reset">Reset</button>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</body>
+</html>

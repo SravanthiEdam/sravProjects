@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form{
+            border: 3px solid #f1f1f1;
+        }
+        input[type=text], input[type=password]{
+            width: 100%;
+            padding: 12px 20px;
+            margin : 8px 0px;
+            display: inline-block;
+            box-sizing: border-box;
+            border: 1px solid #cccc;
+        }
+        button{
+            background-color: #4CAF;
+            color:white;
+            width:100%;
+            padding: 12px 14px;
+            margin:8px 0;
+            border:none;
+            cursor: pointer;
+        }
+        button:hover{
+            opacity: 0.8;
+        }
+        .cancelbtn{
+            width:auto;
+            padding: 10px 18px;
+            background-color: #f44336;
+        }
+        .imgcontainer{
+            text-align: center;
+            margin:24px 0 12px 0;
+            position: relative;
+        }
+        img.avatar{
+            width:20%;
+            border-radius: 10%;
+        }
+        .avatar{
+            -webkit-animation: animatezoom 0.6s;
+            animation: animatezoom 0.6s;
+            position: relative;
+        }
+        @-webkit-keyframes animatezoom {
+            from {-webkit-transform: scale(0)} 
+            to {-webkit-transform: scale(1)}
+        }
+        @keyframes animatezoom {
+            from {transform: scale(0)} 
+            to {transform: scale(1)}
+        }
+        .container{
+            padding: 16px;
+        }
+        span.psw {
+  float: right;
+  padding-top: 16px;
+}
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+  .cancelbtn {
+    width: 100%;
+  }
+}
+
+    </style>
+</head>
+<body>
+    <h2>Login Form</h2>
+    <form action="action_page.php" method="post">
+        <div class="imgcontainer">
+          <img src="./images/clintEastWood.jpg" alt="Avatar" class="avatar">
+        </div>
+        <div class="container">
+          <label for="uname"><b>Username</b></label>
+          <input type="text" placeholder="Enter Username" name="uname" required>
+      
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" required>
+      
+          <button type="submit">Login</button>
+          <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+          </label>
+        </div>
+      
+        <div class="container" style="background-color:#f1f1f1">
+          <button type="button" class="cancelbtn">Cancel</button>
+          <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+      </form>
+</body>
+</html>

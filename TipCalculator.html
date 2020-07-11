@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TipCalculator</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        body{
+            width:100vw;
+            height: 100vh;
+            background-image: linear-gradient(to bottom right, blue, pink);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family:'Roboto', sans-serif;
+        }
+        .app{
+            position: relative;
+            width:100%;
+            max-width: 320px;
+            background: #fff;
+            border-radius: 16px;
+            overflow-x: hidden;
+            /* overflow-y: scroll; */
+            box-shadow: 0px 0px 20px rgb(0,0,0,0.2);
+        }
+            .app:after{
+                content:'';
+                display:block;
+                padding-top: calc(100% / (3/4));
+            }
+        .calculator{
+            position: absolute;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            z-index: 1;
+            height:100%;
+            overflow-y: hidden;
+            display:flex;
+            flex-direction: column;
+        }
+        .calculator header{
+            background-color: rgb(189, 73, 135);
+            padding: 10px 15px;
+            box-shadow: 0px 3px 12px rgba(0, 0,0,0.2);
+        }
+
+        h1{
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 24px;
+            text-align: center;
+        }
+        /* Styling the main content now */
+        main{
+            flex: 1 1 1 100%;
+            /* overflow-y: scroll; */
+            padding: 20px 15px;
+        }
+        .input-group{
+            display:flex;
+            margin-bottom: 20px;
+        }
+        .pre{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            padding:10px 15px;
+            color:royalblue;
+            font-size: 18px;
+            border-bottom:4px solid blue;
+            background:thistle;
+            border-radius: 8px 0px 0px 0px;
+        }
+        input{
+            appearance: none;
+            border:none;
+            outline: none;
+            background: none;
+            display:block;
+            width:100%;
+            padding: 10px 15px;
+            border-bottom: 4px solid lightcoral;
+            color:#212;
+            font-size: 16px;
+        }
+        input::placeholder{
+            color:#666;
+            font-size:15px;
+        }
+        select{
+            -webkit-appearance:none;
+            appearance: none;
+            border:none;
+            outline:none;
+            display:block;
+            width:100%;
+            border-bottom:4px solid lightcoral;
+            border-radius: none;
+            columns: #221122;
+            font-size:15px;
+            padding: 10px 15px;
+        }
+        .tip-wrap{
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        p{
+            color: #212121;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        .tip{
+            padding: 15px 25px;
+            box-shadow: 0px 0px 6px rgba(0,0,0,0.2);
+            background-image: linear-gradient(to bottom right, blue, pink);
+            color:#fff;
+        }
+        footer{
+            box-shadow: 0px 0px 6px rgba(0,0,0,0.2);
+        }
+        footer button{
+            display:block;
+            width:100%;
+            padding: 10px 15px;
+            appearance: none;
+            border:none;
+            outline:none;
+            background-image: linear-gradient(to bottom right, blue, pink);
+            color:#fff;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="app">
+        <div class="calculator">
+            <header>
+                <h1>Tip Calculator</h1>
+            </header>
+            <main>
+                <section class="options">
+                    <div class="input-group">
+                        <div class="pre">$</div>
+                        <input type="number" class="cost" placeholder="How much is Your Bill?" required/>
+                    </div>
+                    <div class="input-group">
+                        <select class="service" required>
+                            <option disabled selected>How was your service?</option>
+                            <option value="30">5-Amazing</option>
+                            <option value="20">4-Great</option>
+                            <option value="18">3-Good</option>
+                            <option value="15">2-Alright</option>
+                            <option value="5">1-Terrible</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <input type="number" class="people" placeholder="How many people are sharing the bill?"/>
+                    </div>
+                </section>
+                <section class="tip-wrap">
+                    <p>You should add tip:</p>
+                    <h3 class="tip">$0</h3>
+                </section>
+            </main>
+            <footer>
+                <button id="tip-btn">Tip</button>
+            </footer>
+        </div>
+    </div>
+    <script>
+        const cost_input=document.querySelector('.cost');
+        const service_input=document.querySelector('.service');
+        const people_input=document.querySelector('.people');
+
+        const tip_btn= document.querySelector('#tip-btn');
+
+        tip_btn.addEventListener('click', calc_tip);
+
+        function calc_tip(){
+            let cost = Number(cost_input.value);
+            let service = Number(service_input.value)/100;
+            let people = Number(people_input.value);
+            let tip = (cost * service)/people;
+
+            let tip_el = document.querySelector('.tip-wrap .tip');
+
+            tip_el.innerText = '$' + tip.toFixed(2) + ((people > 1) ? 'each':"");
+        }
+    </script>
+</body>
+</html>
